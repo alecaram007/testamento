@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="Testamento: un dispositivo simulato che si libera da solo se il produttore smette di aggiornarlo per 18 mesi.">
+<title>Testamento · cruscotto</title>
+<link rel="icon" href="icona.svg" type="image/svg+xml">
+<link rel="stylesheet" href="stile.css">
+<script type="module" src="app.mjs"></script>
+</head>
+<body>
+<a class="salta" href="#principale">Vai al contenuto</a>
+
+<header class="testata">
+  <div class="testata-dentro">
+    <div class="marchio">
+      <svg class="logo" viewBox="0 0 32 32" aria-hidden="true">
+        <rect x="5" y="13" width="22" height="16" rx="3" class="logo-corpo"/>
+        <path d="M10 13V9a6 6 0 0 1 11.6-2.2" class="logo-arco"/>
+        <circle cx="16" cy="21" r="2.4" class="logo-buco"/>
+      </svg>
+      <div>
+        <h1>Testamento</h1>
+        <p class="motto">L'hardware che si libera da solo quando il produttore lo abbandona</p>
+      </div>
+    </div>
+    <p class="connessione" id="connessione" role="status" aria-live="polite">Connessione…</p>
+  </div>
+</header>
+
+<main id="principale" class="pagina">
+
+  <!-- Nessun dispositivo: fallo nascere -->
+  <section id="nascita" class="scheda nascita" hidden aria-labelledby="titolo-nascita">
+    <h2 id="titolo-nascita">Fai nascere un dispositivo</h2>
+    <p class="tenue">Nasce con il firmware v1.0 e il bootloader <strong>bloccato</strong>. La sua ROM genera subito il primo codice di liberazione e lo chiude in una capsula a tempo che si apre dopo 18 mesi di calcolo.</p>
+    <form id="modulo-nascita" class="riga-modulo">
+      <div class="campo">
+        <label for="nome">Nome del dispositivo</label>
+        <input id="nome" name="nome" value="Caldo 3000" maxlength="60" required autocomplete="off">
+      </div>
+      <div class="campo stretto">
+        <label for="bit">Modulo N</label>
+        <select id="bit" name="bit">
+          <option value="1024" selected>1024 bit (come l'originale)</option>
+          <option value="2048">2048 bit (più robusto, più lento)</option>
+        </select>
+      </div>
+      <button class="pulsante primario" type="submit">Fai nascere</button>
+    </form>
+    <p id="nascita-errore" class="aiuto errore" role="alert" hidden></p>
+  </section>
+
+  <!-- Il cruscotto -->
+  <div id="cruscotto" hidden>
+    <section class="scheda eroe" aria-labelledby="nome-dispositivo">
+      <div class="eroe-alto">
+        <div>
+          <p class="sopratitolo" id="mese-corrente">mese 0</p>
+          <h2 id="nome-dispositivo">—</h2>
+        </div>
+        <p class="distintivo" id="distintivo">—</p>
+      </div>
+      <dl class="indicatori">
+        <div class="indicatore">
+          <dt>Firmware</dt>
+          <dd id="ind-firmware">—</dd>
+        </div>
+        <div class="indicatore">
+          <dt>Bootloader</dt>
+          <dd id="ind-bootloader">—</dd>
+        </div>
+        <div class="indicatore">
+          <dt>Ultimo aggiornamento</dt>
+          <dd id="ind-aggiornamento">—</dd>
+        </div>
+        <div class="indicatore">
+          <dt>Produttore</dt>
+          <dd id="ind-produttore">—</dd>
+        </div>
+      </dl>
+      <div class="conto" id="conto">
+        <div class="conto-testa">
+          <span id="conto-etichetta">Conto alla rovescia</span>
+          <span id="conto-valore" class="tenue">—</span>
+        </div>
+        <div class="metro" role="meter" id="conto-metro" aria-labelledby="conto-etichetta" aria-valuemin="0" aria-valuemax="18" aria-valuenow="0">
+          <span id="conto-riempimento"></span>
+        </div>
+        <p class="tenue piccolo" id="conto-nota"></p>
+      </div>
+    </section>
+
+    <section class="scheda" aria-labelledby="titolo-linea">
+      <div class="scheda-testa">
+        <h2 id="titolo-linea">La linea del tempo</h2>
+        <p class="tenue piccolo">Un mese simulato vale circa 0,6 s di calcolo su questo Mac.</p>
+      </div>
+      <figure class="linea-tempo">
+        <div class="linea-scorri" tabindex="0" aria-label="Linea del tempo in mesi (scorre in orizzontale)">
+          <svg id="linea" role="img" aria-labelledby="linea-descrizione"></svg>
+        </div>
+        <figcaption>
+          <p id="linea-descrizione" class="visivamente-nascosto"></p>
+          <ul class="legenda" aria-label="Legenda">
+            <li><span class="segno segno-aggiornamento"></span>aggiornamento ufficiale</li>
+            <li><span class="segno segno-sigillata"></span>capsula sigillata (18 mesi)</li>
+            <li><span class="segno segno-valida"></span>si apre con il codice in vigore</li>
+            <li><span class="segno segno-scaduta"></span>si apre con un codice scaduto</li>
+            <li><span class="segno segno-oggi"></span>oggi</li>
+          </ul>
+        </figcaption>
+      </figure>
+    </section>
+
+    <div class="colonne">
+      <div class="colonna">
+        <section class="scheda ordine-3" aria-labelledby="titolo-capsule">
+          <div class="scheda-testa">
+            <h2 id="titolo-capsule">Le capsule</h2>
+            <p class="tenue piccolo">Pubbliche: chiunque può conservarle e provare ad aprirle.</p>
+          </div>
+          <ol class="capsule" id="capsule"></ol>
+        </section>
+
+        <section class="scheda ordine-4" aria-labelledby="titolo-sblocca">
+          <h2 id="titolo-sblocca">Prova un codice di liberazione</h2>
+          <form id="modulo-sblocca" class="pila">
+            <div class="campo">
+              <label for="codice">Codice (32 cifre esadecimali)</label>
+              <input id="codice" name="codice" class="mono" placeholder="7F3A-19C2-0B6E-D451-8A2F-3C90-E7B1-5D04" autocomplete="off" spellcheck="false" aria-describedby="codice-aiuto">
+              <p id="codice-aiuto" class="aiuto" aria-live="polite">Trattini, spazi e minuscole vanno bene.</p>
+            </div>
+            <div class="riga-pulsanti">
+              <button class="pulsante primario" type="submit" id="pulsante-sblocca">Sblocca</button>
+              <button class="pulsante" type="button" id="pulsante-indovina">Tira a indovinare per 2 s</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="scheda ordine-5" aria-labelledby="titolo-installa">
+          <h2 id="titolo-installa">Installa un firmware libero</h2>
+          <form id="modulo-installa" class="riga-modulo">
+            <div class="campo">
+              <label for="firmware">Firmware</label>
+              <input id="firmware" name="firmware" value="FirmwareLibero 1.0" maxlength="60" required autocomplete="off">
+            </div>
+            <button class="pulsante" type="submit">Installa</button>
+          </form>
+          <p class="tenue piccolo" id="installa-nota">Funziona solo a bootloader sbloccato. Provalo anche prima: vedrai il rifiuto.</p>
+        </section>
+      </div>
+
+      <div class="colonna">
+        <section class="scheda ordine-1" aria-labelledby="titolo-tempo">
+          <h2 id="titolo-tempo">Fai passare il tempo</h2>
+          <div class="riga-pulsanti" role="group" aria-label="Mesi da far passare">
+            <button class="pulsante" type="button" data-mesi="1">+1 mese</button>
+            <button class="pulsante" type="button" data-mesi="6">+6 mesi</button>
+            <button class="pulsante" type="button" data-mesi="18">+18 mesi</button>
+          </div>
+          <form id="modulo-tempo" class="riga-modulo">
+            <div class="campo stretto">
+              <label for="mesi">Mesi</label>
+              <input id="mesi" name="mesi" type="number" min="0" max="1200" value="2" inputmode="numeric">
+            </div>
+            <button class="pulsante" type="submit">Passano</button>
+          </form>
+        </section>
+
+        <section class="scheda ordine-2" aria-labelledby="titolo-produttore">
+          <h2 id="titolo-produttore">Il produttore</h2>
+          <form id="modulo-aggiorna" class="riga-modulo">
+            <div class="campo">
+              <label for="versione">Nuova versione</label>
+              <input id="versione" name="versione" value="v1.1" maxlength="40" required autocomplete="off">
+            </div>
+            <button class="pulsante primario" type="submit" id="pulsante-aggiorna">Rilascia l'aggiornamento</button>
+          </form>
+          <p class="tenue piccolo">A ogni aggiornamento la ROM fa scadere il codice e ne chiude uno nuovo in una nuova capsula: il conto alla rovescia riparte.</p>
+          <button class="pulsante pericolo" type="button" id="pulsante-fallisci">Fai fallire il produttore</button>
+        </section>
+
+        <section class="scheda ordine-6" id="scheda-certificato" hidden aria-labelledby="titolo-certificato">
+          <h2 id="titolo-certificato">Certificato di liberazione</h2>
+          <p class="tenue piccolo">Con il sale e l'impronta della ROM: chiunque può verificare che il codice usato era quello giusto.</p>
+          <div class="riga-pulsanti">
+            <a class="pulsante" href="/api/certificato.html" target="_blank" rel="noopener">Apri da stampare</a>
+            <a class="pulsante" href="/api/certificato.txt?scarica">Scarica .txt</a>
+            <a class="pulsante" href="/api/certificato.json?scarica">Scarica .json</a>
+          </div>
+        </section>
+
+        <section class="scheda registro-scheda ordine-7" aria-labelledby="titolo-registro">
+          <div class="scheda-testa">
+            <h2 id="titolo-registro">Il registro</h2>
+            <button class="pulsante piccolo-pulsante" type="button" id="pulisci-registro" data-ferma>Pulisci</button>
+          </div>
+          <p class="tenue piccolo">Lo stesso testo che stampa la riga di comando.</p>
+          <div class="registro" id="registro" role="log" aria-live="polite" tabindex="0" aria-label="Uscita dei comandi"></div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <section class="scheda spiegazione" aria-labelledby="titolo-come">
+    <h2 id="titolo-come">Come funziona, in breve</h2>
+    <ol class="passi">
+      <li><strong>Un codice che non conosce nessuno.</strong> Alla nascita la ROM di avvio, che nessun aggiornamento può cambiare, tira a sorte un codice di 128 bit. Ne tiene solo un'«impronta» (un riassunto da cui il codice non si ricava) e chiude il codice in una <em>capsula</em>.</li>
+      <li><strong>Una capsula che si apre solo con il tempo.</strong> Per aprirla bisogna fare <span id="spiega-t">milioni di</span> calcoli (elevamenti al quadrato), uno dopo l'altro: ognuno ha bisogno del risultato del precedente, quindi mille computer non vanno più veloci di uno. Qui valgono 18 mesi.</li>
+      <li><strong>Ogni aggiornamento fa scadere il codice.</strong> Quando il produttore aggiorna, la ROM getta via il codice vecchio e ne chiude uno nuovo in una nuova capsula. Chi apre una capsula vecchia trova un codice ormai scaduto.</li>
+      <li><strong>Se gli aggiornamenti si fermano, l'ultima capsula vince.</strong> Dopo 18 mesi senza aggiornamenti l'ultima capsula si apre mentre il suo codice vale ancora: il bootloader si sblocca e si può installare il software che si vuole.</li>
+      <li><strong>Nessuna scorciatoia.</strong> Indovinare il codice richiederebbe miliardi di miliardi di anni; il produttore non conosce il codice; una capsula alterata viene riconosciuta e rifiutata.</li>
+    </ol>
+    <details class="approfondimento">
+      <summary>E nella versione vera? tlock e drand</summary>
+      <p>Il puzzle di Rivest, Shamir e Wagner misura il tempo in calcoli, quindi dipende dalla velocità di chi calcola: un circuito dedicato aprirebbe la capsula prima. Un dispositivo vero userebbe <strong>drand</strong>, un «faro» pubblico gestito da molte organizzazioni indipendenti che a intervalli regolari pubblica una firma a soglia. Con la cifratura <strong>tlock</strong> la capsula si cifra verso un turno futuro del faro, per esempio quello di una data 18 mesi più avanti: la chiave per aprirla è proprio la firma che la rete pubblicherà in quel momento, e prima non esiste.</p>
+      <p>Così l'apertura dipende dal calendario e non dalla potenza di calcolo. Il prezzo è affidarsi a una rete esterna che deve continuare a esistere, e in cui un numero di nodi oltre la soglia non deve mettersi d'accordo per pubblicare in anticipo. Si possono usare entrambi: tlock per la data, RSW come riserva.</p>
+    </details>
+  </section>
+
+  <footer class="piede">
+    <p class="tenue piccolo">Cartella del dispositivo: <code id="cartella">—</code></p>
+    <button class="pulsante piccolo-pulsante pericolo-tenue" type="button" id="pulsante-ricomincia" hidden>Nuovo dispositivo</button>
+  </footer>
+</main>
+
+<div class="avviso" id="avviso" role="alert" hidden></div>
+</body>
+</html>

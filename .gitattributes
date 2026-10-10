@@ -1,0 +1,6 @@
+# I file della demo Windows (demo/caldo-3000) sono letti byte per byte dai test della
+# versione Mac: righe CRLF e BOM devono restare come sono, su qualunque sistema.
+/demo/** -text
+
+# I lanciatori per Mac sono script bash: sempre righe LF.
+*.command text eol=lf

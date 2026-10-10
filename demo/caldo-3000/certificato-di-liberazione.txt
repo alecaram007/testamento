@@ -1,0 +1,13 @@
+﻿═══════════════════ CERTIFICATO DI LIBERAZIONE ═══════════════════
+Dispositivo                 «Caldo 3000»
+Nato                        mese 0 (ottobre 2026) con il firmware v1.0
+Ultimo firmware ufficiale   v1.2, mese 12 (ottobre 2027)
+Aggiornamenti ricevuti      2 (v1.1, v1.2)
+Liberato                    mese 32 (giugno 2029), dopo 20 mesi senza aggiornamenti
+Chiave                      codice #3 dalla capsula #3 · impronta B0CE628F4617…5F79
+
+Il produttore ha smesso di aggiornare questo dispositivo. Come
+prevede la sua ROM di avvio, il codice chiuso nell'ultima capsula
+è diventato leggibile, e da oggi il bootloader accetta qualunque
+firmware. Nessuno ha dovuto chiedere il permesso: è bastato il tempo.
+══════════════════════════════════════════════════════════════════

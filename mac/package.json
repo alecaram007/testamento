@@ -1,0 +1,16 @@
+{
+  "name": "testamento-mac",
+  "version": "1.0.0",
+  "description": "Testamento per Mac: il dispositivo simulato che si libera da solo se il produttore smette di aggiornarlo per 18 mesi. Node puro, nessuna dipendenza.",
+  "type": "module",
+  "private": true,
+  "license": "UNLICENSED",
+  "engines": { "node": ">=20" },
+  "bin": { "testamento": "bin/testamento.mjs" },
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test",
+    "demo": "node demo.mjs",
+    "demo:veloce": "node demo.mjs --veloce"
+  }
+}

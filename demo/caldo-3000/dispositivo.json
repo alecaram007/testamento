@@ -1,0 +1,69 @@
+{
+  "Formato": "testamento-dispositivo-1",
+  "Nome": "Caldo 3000",
+  "AnnoNascita": 2026,
+  "MeseNascita": 10,
+  "Mese": 32,
+  "Firmware": "FirmwareLibero 1.0",
+  "FirmwareUfficiale": false,
+  "MeseUltimoAggiornamento": 12,
+  "Bootloader": "SBLOCCATO",
+  "MeseLiberazione": 32,
+  "QuadratureAlMese": 56100,
+  "QuadratureAlSecondo": 93500,
+  "Rom": {
+    "CodiceInVigore": 3,
+    "Liberato": true,
+    "Codici": [
+      {
+        "Numero": 1,
+        "Firmware": "v1.0",
+        "MeseCreazione": 0,
+        "Sale": "C2ED224AD44C1167EB81965318916CAD",
+        "Impronta": "7D919FEA5B749E80B329C2658488658ACAC99D730A0970FB25FED12DE4ACA547",
+        "MeseScadenza": 6,
+        "ScadutoCon": "v1.1"
+      },
+      {
+        "Numero": 2,
+        "Firmware": "v1.1",
+        "MeseCreazione": 6,
+        "Sale": "FDD5AFE64CC6EE44F5C0BEAFE97AA11E",
+        "Impronta": "919C4E93EE37B638DD18114343A9A85DB851A9938CC959AB5B2C0C88FB885B56",
+        "MeseScadenza": 12,
+        "ScadutoCon": "v1.2"
+      },
+      {
+        "Numero": 3,
+        "Firmware": "v1.2",
+        "MeseCreazione": 12,
+        "Sale": "C74B0E3E0925C38253FD581978FBCCF6",
+        "Impronta": "B0CE628F46174FF7F510E5B266FADA82F6B1A81B812835D20C7F27046CE55F79",
+        "MeseScadenza": -1,
+        "ScadutoCon": null
+      }
+    ]
+  },
+  "Storia": [
+    {
+      "Mese": 0,
+      "Firmware": "v1.0",
+      "Ufficiale": true
+    },
+    {
+      "Mese": 6,
+      "Firmware": "v1.1",
+      "Ufficiale": true
+    },
+    {
+      "Mese": 12,
+      "Firmware": "v1.2",
+      "Ufficiale": true
+    },
+    {
+      "Mese": 32,
+      "Firmware": "FirmwareLibero 1.0",
+      "Ufficiale": false
+    }
+  ]
+}

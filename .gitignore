@@ -1,0 +1,27 @@
+# Versione Windows: l'eseguibile si rigenera con build.cmd
+# (testamento.cmd, demo.cmd e test.cmd lo compilano da soli se manca).
+# In bin\ finisce anche taratura.json, che dipende dal PC.
+/bin/
+
+# Versione Mac: la taratura dipende dal computer e si rimisura alla prima esecuzione
+/mac/taratura.json
+/mac/taratura-*.json
+
+# Cartelle di lavoro ricreate dalla demo Mac e dal cruscotto web
+/mac/demo/
+/mac/dispositivo-web/
+
+# La cartella predefinita dei comandi (./dispositivo) quando li provi qui
+/dispositivo/
+/mac/dispositivo/
+
+# Sistema, editor, Node
+.DS_Store
+Thumbs.db
+desktop.ini
+node_modules/
+*.log
+*.tmp
+*~
+.vscode/
+.idea/

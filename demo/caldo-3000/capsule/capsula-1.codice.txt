@@ -1,0 +1,6 @@
+﻿Testamento · codice di liberazione pubblicato
+
+Dispositivo:  «Caldo 3000»
+Capsula:      #1, creata al mese 0 con il firmware v1.0
+Aperta:       al mese 18, dopo 1.009.800 quadrature sequenziali (11,6 s su questo PC)
+Codice:       37E9-54FF-0348-20CA-43A9-A4E5-8025-4053
